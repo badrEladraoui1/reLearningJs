@@ -207,6 +207,18 @@ const anotherObject = {
 // If the property of the object you are trying to access has a space in its name, you will need to use bracket notation.
 
 
+/*
+So, in the first example (obj[checkProp]), 
+you're correctly accessing the property of obj using the value of checkProp as the key.
+This allows you to dynamically access the property based on the value contained in the checkProp variable.
+
+However, in the second example (obj.checkProp),
+JavaScript interprets obj.checkProp as trying to access a property named "checkProp" literally,
+rather than using the value stored in the variable checkProp.
+Since there's no property named "checkProp" in the object, it returns undefined.
+*/
+
+
 // example with brackets
 
 const testObj = {
@@ -245,10 +257,239 @@ const myDog = {
     "tails": 1,
     "friends": ["freeCodeCamp Campers"],
     "bark": "woof"
-  };
+};
+
+// Only change code below this line
+
+delete myDog.bark
+
+console.log(myDog)
+
+
+// another example : here we switched a switch statement to an object
+
+// Setup
+function phoneticLookup(val) {
+    let result = "";
+
+    // Only change code below this line
+    // switch(val) {
+    //   case "alpha":
+    //     result = "Adams";
+    //     break;
+    //   case "bravo":
+    //     result = "Boston";
+    //     break;
+    //   case "charlie":
+    //     result = "Chicago";
+    //     break;
+    //   case "delta":
+    //     result = "Denver";
+    //     break;
+    //   case "echo":
+    //     result = "Easy";
+    //     break;
+    //   case "foxtrot":
+    //     result = "Frank";
+    // }
+
+    const lookup = {
+        alpha: "Adams",
+        bravo: "Boston",
+        charlie: "Chicago",
+        delta: "Denver",
+        echo: "Easy",
+        foxtrot: "Frank"
+    }
+
+    result = lookup[val];
+
+    // Only change code above this line
+    return result;
+}
+
+console.log(phoneticLookup("charlie"));
+
+
+// adding an object to an array : 
+
+const myMusic = [
+    {
+        "artist": "Billy Joel",
+        "title": "Piano Man",
+        "release_year": 1973,
+        "formats": [
+            "CD",
+            "8T",
+            "LP"
+        ],
+        "gold": true
+    }
+];
+
+myMusic.push({
+    artist: "idk",
+    title: "idk2",
+    release_year: 1999,
+    formats: [
+        "CD",
+        "8T",
+        "LP"
+    ]
+})
+
+console.log(myMusic)
+
+
+// nested object
+
+const myStorage = {
+    "car": {
+        "inside": {
+            "glove box": "maps",
+            "passenger seat": "crumbs"
+        },
+        "outside": {
+            "trunk": "jack"
+        }
+    }
+};
+
+const gloveBoxContents = myStorage.car.inside["glove box"];
+
+
+// nested array : 
+
+const myPlants = [
+    {
+        type: "flowers",
+        list: [
+            "rose",
+            "tulip",
+            "dandelion"
+        ]
+    },
+    {
+        type: "trees",
+        list: [
+            "fir",
+            "pine",
+            "birch"
+        ]
+    }
+];
+
+const secondTree = myPlants[1].list;
+console.log(secondTree)
+
+// const secondTree = myPlants[1].list[1];
+//console.log(secondTree)
+
+
+
+// Record Collection
+
+// Setup
+const recordCollection = {
+    2548: {
+        albumTitle: 'Slippery When Wet',
+        artist: 'Bon Jovi',
+        tracks: ['Let It Rock', 'You Give Love a Bad Name']
+    },
+    2468: {
+        albumTitle: '1999',
+        artist: 'Prince',
+        tracks: ['1999', 'Little Red Corvette']
+    },
+    1245: {
+        artist: 'Robert Palmer',
+        tracks: []
+    },
+    5439: {
+        albumTitle: 'ABBA Gold'
+    }
+};
+
+// Only change code below this line
+function updateRecords(records, id, prop, value) {
+
+    if (value === "") delete records[id][prop]
+    else if (prop !== "tracks") records[id][prop] = value
+    else {
+        const areTracksIn = records[id].hasOwnProperty("tracks")
+        if (!areTracksIn) {
+            records[id]["tracks"] = []
+        }
+        records[id].tracks.push(value)
+    }
+    return records;
+}
+
+console.log(updateRecords(recordCollection, 1245, "tracks", "Addicted to Love"));
+
+
+// LOOPS
+
+
+// while loop 
+
+// Setup
+const myArray = [];
+
+// Only change code below this line
+
+let i = 5
+
+while (i >= 0) {
+    myArray.push(i)
+    i--
+}
+
+console.log(myArray)
+
+
+
+// for loop 
+
+// Setup
+const myArray2 = [];
+
+// Only change code below this line
+
+
+for( let i = 1 ; i < 6 ; i ++ ){
+  myArray2.push(i)
+}
+
+console.log(myArray2)
+
+
+const myArray3 = [];
+
+// Only change code below this line
+
+
+for(let i = 9 ; i > 0 ; i -= 2){
+  myArray3.push(i)
+}
+
+console.log(myArray3)
+
+
+
+function multiplyAll(arr) {
+    let product = 1;
+    // Only change code below this line
+    for(let i = 0 ; i < arr.length ; i++){
+      for(let j = 0 ; j < arr[i].length ; j++){
+        product *= arr[i][j]
+      }
+    }
+    // Only change code above this line
+    return product;
+  }
   
-  // Only change code below this line
+  console.log(multiplyAll([[1, 2], [3, 4], [5, 6, 7]]));
+
+
   
-  delete myDog.bark
-  
-  console.log(myDog)
