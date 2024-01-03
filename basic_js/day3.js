@@ -185,3 +185,18 @@ function countdown(n) {
 }
 
 console.log(countdown(3))
+
+
+// last recursive exo : 
+
+function rangeOfNumbers(startNum, endNum) {
+    if (startNum > endNum) {
+        return [];
+    } else {
+        const range = rangeOfNumbers(startNum + 1, endNum);
+        range.unshift(startNum);
+        return range;
+    }
+}
+
+console.log(rangeOfNumbers(5,10))
