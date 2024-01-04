@@ -399,14 +399,161 @@ console.log(arrx) // [ 6, 8 ]
 
 
 
+
 // Destructuring via rest elements
 
-const [a, b, ...arr] = [1, 2, 3, 4, 5, 7];
-console.log(a, b);
-console.log(arr);
+const [a3, b3, ...arr8] = [1, 2, 3, 4, 5, 7];
+console.log(a3, b3);
+console.log(arr8);
+
+
+//So, when you use [...list] in a function parameter or assignment,
+// you're creating a new array with the same elements as the original array,
+// allowing you to manipulate the copy without altering the original array.
+// This technique is useful when you want to perform operations on an array without modifying the original data.
 
 /*
 Variables a and b take the first and second values from the array. After that, because of the rest syntax presence,
  arr gets the rest of the values in the form of an array. The rest element only works correctly as the last variable in the list.
   As in, you cannot use the rest syntax to catch a subarray that leaves out the last element of the original array.
 */
+
+function removeFirstTwo(list) {
+    const [, , ...newArr] = list
+    return newArr;
+}
+
+const source = [1, 2, 3, 4];
+const sourceWithoutFirstTwo = removeFirstTwo(source);
+console.log(sourceWithoutFirstTwo) // [3, 4]
+
+
+
+
+// Use Destructuring Assignment to Pass an Object as a Function's Parameters
+
+const profileUpdate1 = (profileData) => {
+    const { name, age, nationality, location } = profileData;
+
+}
+
+
+const profileUpdate2 = ({ name, age, nationality, location }) => {
+
+}
+
+
+// better example :
+
+const stats = {
+    max: 56.78,
+    standard_deviation: 4.34,
+    median: 34.54,
+    mode: 23.87,
+    min: -0.75,
+    average: 35.85
+};
+
+const data = {
+    max: 10,
+    min: 4
+}
+
+// Only change code below this line
+const half = ({ max, min }) => {
+    console.log(max)
+    console.log(min)
+    return "Results are : " + (max + min) / 2.0;
+}
+
+console.log(half(stats))
+console.log(half(data))
+
+
+// Only change code above this line
+
+
+
+
+
+//   Create Strings using Template Literals
+
+const result = {
+    success: ["max-length", "no-amd", "prefer-arrow-functions"],
+    failure: ["no-var", "var-on-top", "linebreak"],
+    skipped: ["no-extra-semi", "no-dup-keys"]
+};
+function makeList(arr) {
+    // Only change code below this line
+    const failureItems = [];
+    for (let i = 0; i < arr.length; i++) {
+        failureItems.push(`<li class="text-warning">${arr[i]}</li>`)
+    }
+    // Only change code above this line
+    return failureItems;
+}
+
+const failuresList = makeList(result.failure);
+console.log(failuresList)
+
+// console.log(" badr \n eladr")
+
+
+
+
+// Write Concise Object Literal Declarations Using Object Property Shorthand
+
+const getMousePosition1 = (x, y) => ({
+    x: x,
+    y: y
+});
+
+// to this : 
+
+const getMousePosition2 = (x, y) => ({ x, y }); //You can simply write x once, and it will be converted to x: x (or something equivalent) under the hood
+
+
+// example 
+const createPerson = (namee = "badr", age = "21", gender = "male") => {
+    // Only change code below this line
+    return { namee, age, gender }
+    // Only change code above this line
+};
+
+console.log(createPerson())
+
+
+
+
+
+//Write Concise Declarative Functions with ES6
+
+const person1 = {
+    name: "Taylor",
+    sayHello: function () {
+        return `Hello! My name is ${this.name}.`;
+    }
+};
+
+// to this
+
+
+const person2 = {
+    name: "Taylor",
+    sayHello() {
+        return `Hello! My name is ${this.name}.`;
+    }
+};
+
+// better example
+
+// Only change code below this line
+const bicycle = {
+    gear: 2,
+    setGear(newGear) {
+        this.gear = newGear;
+    }
+};
+// Only change code above this line
+bicycle.setGear(3);
+console.log(bicycle.gear);
