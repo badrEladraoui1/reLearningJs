@@ -361,3 +361,45 @@ ourArray[1] = "not b anymore";
 
 
 // ! Iterate Through All an Array's Items Using For Loops
+
+// * JavaScript offers several built in methods that each iterate over arrays in slightly different ways to achieve different results
+// ?  (such as every(), forEach(), map(), etc.),
+// * however the technique which is most flexible and offers us the greatest amount of control is a simple for loop.
+
+{
+    function greaterThanTen(arr) {
+        let newArr = [];
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] > 10) {
+                newArr.push(arr[i]);
+            }
+        }
+        return newArr;
+    }
+
+    greaterThanTen([2, 12, 8, 14, 80, 0, 1]);
+}
+
+// * GOOD EXAMPLE 
+
+{
+    function filteredArray(arr, elem) {
+        let newArr = [];
+        // Only change code below this line
+        for (let i = 0; i < arr.length; i++) {
+            let booleano = false;
+            for (let j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] === elem) {
+                    console.log(arr[i][j])
+                    booleano = true
+                    break
+                }
+            }
+            if (!booleano) newArr.push(arr[i])
+        }
+        // Only change code above this line
+        return newArr;
+    }
+
+    console.log(filteredArray([[10, 8, 3], [14, 6, 23], [3, 18, 6]], 18));
+}
