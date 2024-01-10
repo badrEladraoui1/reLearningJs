@@ -56,3 +56,54 @@
     console.log(reverseString2("hello"))
 }
 
+
+
+
+
+
+// ! Factorialize a Number
+
+{
+    function factorialize1(num) {
+        if (num === 0 || num === 1) return 1
+        else return num * factorialize(num - 1)
+    }
+
+    function factorialize2(num) {
+        let fac = 1
+        for (let i = 1; i <= num; i++) { // ? for(let i = num ; i >= 1 ; i--)
+            fac *= i
+        }
+        return fac
+    }
+
+    console.log(factorialize1(5))
+    console.log(factorialize2(5))
+}
+
+
+
+
+
+
+// ! Find the Longest Word in a String
+
+// ? longest by word function : 
+{
+    function findLongestWordLength(str) {
+        const strArr = str.split(' ')
+        console.log(strArr)
+        let longestInLength = strArr[0]
+        for (let i = 1; i < strArr.length; i++) {
+            console.log(strArr[i])
+            if (strArr[i].length > longestInLength.length) {
+                longestInLength = strArr[i]
+            } else { ; }
+        }
+        console.log("the longest is : ", longestInLength)
+        return longestInLength
+    }
+
+    findLongestWordLength("The quick brown fox jumped over the lazy dog");
+}
+
