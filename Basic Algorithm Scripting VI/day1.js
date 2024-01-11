@@ -86,24 +86,5 @@
 
 
 
-// ! Find the Longest Word in a String
 
-// ? longest by word function : 
-{
-    function findLongestWordLength(str) {
-        const strArr = str.split(' ')
-        console.log(strArr)
-        let longestInLength = strArr[0]
-        for (let i = 1; i < strArr.length; i++) {
-            console.log(strArr[i])
-            if (strArr[i].length > longestInLength.length) {
-                longestInLength = strArr[i]
-            } else { ; }
-        }
-        console.log("the longest is : ", longestInLength)
-        return longestInLength
-    }
-
-    findLongestWordLength("The quick brown fox jumped over the lazy dog");
-}
 
