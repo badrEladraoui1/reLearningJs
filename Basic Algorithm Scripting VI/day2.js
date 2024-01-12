@@ -315,6 +315,7 @@
 {
     function titleCase(str) {
         const strArr = str.split(' ');
+        console.log(strArr)
 
         const result = strArr.map(word =>
             word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
