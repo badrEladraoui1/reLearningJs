@@ -92,3 +92,10 @@
         tea4BlackTeamFCC
     );
 }
+
+
+
+
+
+
+// ! Understand the Hazards of Using Imperative Code

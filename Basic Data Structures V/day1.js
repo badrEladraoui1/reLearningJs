@@ -152,7 +152,7 @@ ourArray[1] = "not b anymore";
 {
     let array = ['today', 'was', 'not', 'so', 'great'];
     console.log(array)
-    let newArray = array.splice(2, 2); // ? removed elements in newArray
+    let newArray = array.splice(0, 3); // ? removed elements in newArray
     console.log(newArray)
     console.log(array)
 }
