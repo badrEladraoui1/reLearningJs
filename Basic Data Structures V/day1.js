@@ -235,8 +235,8 @@ ourArray[1] = "not b anymore";
     let weatherConditions = ['rain', 'snow', 'sleet', 'hail', 'clear'];
     console.log(weatherConditions)
     let todaysWeather = weatherConditions.slice(1, 3);
-    console.log(weatherConditions)
     console.log(todaysWeather)
+    console.log(weatherConditions)
 }
 
 // * Example : 
