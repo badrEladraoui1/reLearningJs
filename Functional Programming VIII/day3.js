@@ -161,7 +161,8 @@ cities.splice(3, 1);
 }
 
 
-{// The global variable // * not finished yet
+{
+    // The global variable
     const watchList = [
         {
             "Title": "Inception",
@@ -276,20 +277,89 @@ cities.splice(3, 1);
     ];
 
     function getRating(watchList) {
+        let counter = 0
         // Only change code below this line
-        let averageRating;
-        averageRating = watchList.filter(item => item.Director === "Christopher Nolan")
-            .map(item => parseFloat(item.imdbRating))
+        let averageRating = watchList.filter(item => item.Director === "Christopher Nolan")
+            .map(item => Number(item.imdbRating))
             .reduce((acc, item) => {
-                let sum = acc + item
-
+                if (!isNaN(item)) {
+                    counter++
+                    return acc + item
+                }
+                return acc;
             }, 0)
 
         // Only change code above this line
-        return averageRating;
+        return averageRating / counter;
     }
-
     console.log(getRating(watchList));
+
+
+    // another way :
+
+    // const getRating = (list) => {
+    //   let averageRating = list.reduce((data , {Director : director , imdbRating : rating} , index) => {
+    //     if(director === "Christopher Nolan"){
+    //       data.count ++;
+    //       data.sum += Number(rating) ;
+    //     }
+    //     console.log(index , data)
+    //     return data
+    //   },{sum : 0 , count : 0})
+    //   return averageRating.sum / averageRating.count
+    // }
+
+    // console.log("result : " + getRating(watchList));
 }
 
+
+
+
+
+
+
+
+// ! Use Higher-Order Functions map, filter, or reduce to Solve a Complex Problem
+
+{
+    const squareList = arr => {
+        // Only change code below this line
+        return arr
+            .filter(number => (number > 0 && Number.isInteger(number)))
+            .map(number => Math.pow(number, 2))
+
+        // Only change code above this line
+    };
+
+    const squaredIntegers = squareList([-3, 4.8, 5, 3, -3.2]);
+    console.log(squaredIntegers);
+}
+
+{
+    const squareList = arr => {
+        // Only change code below this line
+        return arr
+            .reduce((data, number) => {
+                // console.log(data,i,number)
+                if (number > 0 && Number.isInteger(number)) {
+                    data.push(Math.pow(number, 2))
+                }
+                return data
+            }, [])
+
+        // Only change code above this line
+    };
+
+    const squaredIntegers = squareList([-3, 4.8, 5, 3, -3.2]);
+    console.log(squaredIntegers);
+}
+
+
+
+
+
+
+
+
+// ! Sort an Array Alphabetically using the sort Method
 
