@@ -662,3 +662,18 @@ cities.splice(3, 1);
     const partialFn = impartial.bind(this, 1, 2);
     partialFn(10); // 13
 }
+
+
+// * Combining Currying and Partial Application:
+
+// * You can use both currying and partial application to create highly flexible and reusable functions.For example:
+
+{
+    const add = x => y => z => x + y + z;
+
+    // Partially applying the first two arguments
+    const addPartial = add(1)(2);
+
+    console.log(addPartial(10)); // Output: 13
+
+}
