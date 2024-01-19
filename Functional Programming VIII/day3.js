@@ -363,3 +363,302 @@ cities.splice(3, 1);
 
 // ! Sort an Array Alphabetically using the sort Method
 
+// * sort modifies the original array
+
+{
+    function ascendingOrder(arr) {
+        return arr.sort(function (a, b) {
+            return a - b;
+            // return a === b ? 0 : a > b ? 1 : -1;
+        });
+    }
+
+    console.log(ascendingOrder([1, 5, 2, 3, 4]))
+
+    // ? This would return the value [1, 2, 3, 4, 5].
+}
+
+
+{
+    function reverseAlpha(arr) {
+        return arr.sort(function (a, b) {
+            return a === b ? 0 : a < b ? 1 : -1;
+            // return a - b;
+        });
+    }
+
+    console.log(reverseAlpha(['l', 'h', 'z', 'b', 's']))
+    // ? This would return the value ['z', 's', 'l', 'h', 'b'].
+}
+
+// * JavaScript's default sorting method is by string Unicode point value, which may return unexpected results. Therefore, it is encouraged to provide a callback function to specify how to sort the array items. When such a callback function, normally called compareFunction, is supplied, the array elements are sorted according to the return value of the compareFunction: If compareFunction(a,b) returns a value less than 0 for two elements a and b, then a will come before b. If compareFunction(a,b) returns a value greater than 0 for two elements a and b, then b will come before a. If compareFunction(a,b) returns a value equal to 0 for two elements a and b, then a and b will remain unchanged.
+
+{
+    function alphabeticalOrder(arr) {
+        // Only change code below this line
+
+        return arr
+            .sort((a, b) => a === b ? 0 : a < b ? -1 : 1)
+
+        // Only change code above this line
+    }
+
+    console.log(alphabeticalOrder(["a", "d", "c", "a", "z", "g"]))
+}
+
+
+
+
+
+
+
+// ! Return a Sorted Array Without Changing the Original Array
+
+// * A side effect of the sort method is that it changes the order of the elements in the original array. In other words, it mutates the array in place. One way to avoid this is to first concatenate an empty array to the one being sorted (remember that slice and concat return a new array), then run the sort method.
+
+{
+    const globalArray = [5, 6, 3, 2, 9];
+
+    function nonMutatingSort(arr) { // ? three methods here : 
+
+        // return [...arr]
+        //   .sort((a , b) => a - b)
+
+        // return [...arr]
+        //   .sort((a , b) => 
+        // a - b
+        //   a === b ? 0 : a < b ? -1 : 1 
+        //   )
+
+        let newArr = []
+        newArr = newArr.concat(arr) // *  or using this : newArr = arr.slice()
+        return newArr
+            .sort((a, b) =>
+                // a - b
+                a === b ? 0 : a < b ? -1 : 1
+            )
+
+    }
+
+    console.log("results : ", nonMutatingSort(globalArray))
+    console.log("original : ", globalArray)
+
+    // const a = [1,3,4]
+    // const c = []
+    // const newww =  c.concat(a)
+    // console.log(newww)
+}
+
+
+
+
+
+
+
+
+// ! Split a String into an Array Using the split Method
+
+// * The split method splits a string into an array of strings.
+
+// * It takes an argument for the delimiter, which can be a character to use to break up the string or a regular expression. For example, if the delimiter is a space, you get an array of words, and if the delimiter is an empty string, you get an array of each character in the string.
+
+{
+    const str = "Hello World";
+    const bySpace = str.split(" ");
+
+    const otherString = "How9are7you2today";
+    const byDigits = otherString.split(/\d/);
+
+    // ? bySpace would have the value ["Hello", "World"] and byDigits would have the value ["How", "are", "you", "today"].
+}
+
+// * Since strings are immutable, the split method makes it easier to work with them.
+// * Keep in mind that the original string remains unchanged, and the split method returns a new array based on the specified delimiter.
+
+
+{
+    function splitify(str) {
+        // Only change code below this line
+        const splitted = str.split(/\W/)
+        return splitted
+        // Only change code above this line
+    }
+
+    console.log(splitify("Hello World,I-am code"))
+}
+
+
+
+
+
+
+// ! Combine an Array into a String Using the join Method
+
+// * The join method is used to join the elements of an array together to create a string. It takes an argument for the delimiter that is used to separate the array elements in the string.
+
+
+{
+    const arr = ["Hello", "World"];
+    const str = arr.join(" ");
+
+    // ? str would have a value of the string Hello World. 
+}
+
+{
+    function sentensify(str) {
+        // Only change code below this line
+        return str.split(/\W/).join(' ')
+
+        // Only change code above this line
+    }
+
+    console.log(sentensify("May-the-force-be-with-you"))
+}
+
+
+
+
+
+// ! Apply Functional Programming to Convert Strings to URL Slugs
+
+// *  Recall that map and filter are special cases of reduce.
+
+{
+    // Only change code below this line
+    function urlSlug(title) {
+
+        return title.trim().split(/\s+/).join('-').toLowerCase()
+
+    }
+    // Only change code above this line
+    console.log(urlSlug(" Winter Is  Coming"))
+
+    // ? urlSlug(" Winter Is  Coming") should return the string winter-is-coming.
+}
+
+
+
+
+
+
+// ! Use the every Method to Check that Every Element in an Array Meets a Criteria
+
+// * The every method works with arrays to check if every element passes a particular test. It returns a Boolean value - true if all values meet the criteria, false if not.
+
+{
+    // * For example, the following code would check if every element in the numbers array is less than 10:
+
+    const numbers = [1, 5, 8, 0, 10, 11];
+
+    numbers.every(function (currentValue) {
+        return currentValue < 10;
+    });
+
+    // ? The every method would return false here.
+}
+
+
+{
+    function checkPositive(arr) {
+        // Only change code below this line
+
+        return arr
+            .every(item => item > 0)
+
+        // Only change code above this line
+    }
+
+    console.log(checkPositive([1, 2, 3, -4, 5]))
+}
+
+
+
+
+
+
+
+// ! Use the some Method to Check that Any Elements in an Array Meet a Criteria
+
+// * The some method works with arrays to check if any element passes a particular test. It returns a Boolean value - true if any of the values meet the criteria, false if not.
+
+{
+    const numbers = [10, 50, 8, 220, 110, 11];
+
+    numbers.some(function (currentValue) {
+        return currentValue < 10;
+    });
+
+    // ? The some method would return true.
+}
+
+{
+    function checkPositive(arr) {
+        // Only change code below this line
+
+        return arr
+            .some(item => item > 0)
+
+        // Only change code above this line
+    }
+
+    console.log(checkPositive([1, 2, 3, -4, 5]))
+}
+
+// * The some method in JavaScript stops iterating over the array as soon as it finds an element for which the provided callback function returns true. It does not continue checking the remaining elements in the array.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ! Introduction to Currying and Partial Application
+
+// * The arity of a function is the number of arguments it requires. Currying a function means to convert a function of N arity into N functions of arity 1.
+
+// * In other words, it restructures a function so it takes one argument, then returns another function that takes the next argument, and so on.
+
+// * Here's an example:
+
+{
+    function unCurried(x, y) {
+        return x + y;
+    }
+
+    function curried(x) {
+        return function (y) {
+            return x + y;
+        }
+    }
+
+    const curried = x => y => x + y
+
+    curried(1)(2)
+
+    // ? curried(1)(2) would return 3
+}
+
+// * This is useful in your program if you can't supply all the arguments to a function at one time. You can save each function call into a variable, which will hold the returned function reference that takes the next argument when it's available. Here's an example using the curried function in the example above:
+
+{
+    const funcForY = curried(1);
+    console.log(funcForY(2)); // 3
+}
+
+// * Similarly, partial application can be described as applying a few arguments to a function at a time and returning another function that is applied to more arguments. Here's an example:
+
+{
+    function impartial(x, y, z) {
+        return x + y + z;
+    }
+
+    const partialFn = impartial.bind(this, 1, 2);
+    partialFn(10); // 13
+}
