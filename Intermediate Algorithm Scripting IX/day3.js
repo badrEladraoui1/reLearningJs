@@ -51,8 +51,8 @@
 
         // filter the collection
         return collection.filter(obj => {
-            for (let i = 0; i < sourceKeys.length; i++) {
-                if (obj[sourceKeys[i]] !== source[sourceKeys[i]]) {
+            for (let i = 0; i < souceKeys.length; i++) {
+                if (obj[souceKeys[i]] !== source[souceKeys[i]]) {
                     return false;
                 }
             }
